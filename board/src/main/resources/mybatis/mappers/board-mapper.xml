@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.board.dao.BoardDAO"> 
+	<insert id="insertBoard" parameterType="com.board.dto.BoardDTO">
+		INSERT INTO BOARD 
+		VALUES (
+			board_seq.nextval, #{writer}, #{title}, #{contents}
+		)
+	</insert>
+	
+	<select id="selectBoardList" resultType="com.board.dto.BoardDTO">
+		SELECT * FROM BOARD
+	</select>
+	
+	<delete id="deleteBoard">
+		DELETE FROM BOARD WHERE BOARD_SEQ = #{SEQ}
+	</delete>
+	
+	<update id="updateBoard">
+		UPDATE BOARD SET WRITER = #{WRITER}, TITLE = #{TITLE}, CONTENTS = #{CONTENTS}
+	</update>
+</mapper>
